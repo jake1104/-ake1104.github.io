@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML, CSS, JS Code Editor</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body bgcolor="#2E2E2E">
+    <div class="editor" style="text-align: center">
+		<h2>HTML</h2>
+        <textarea class="textarea" id="html-code" placeholder="HTML code"></textarea>
+		<h2>CSS</h2>
+        <textarea class="textarea" id="css-code" placeholder="CSS code"></textarea>
+		<h2>JS</h2>
+        <textarea class="textarea" id="js-code" placeholder="JS code"></textarea>
+	</div>
+	<div class="preview" style="text-align: center">
+		<h2>RUN</h2>
+		<iframe class="iframe" id="output"></iframe>
+    </div>
+	
+	<script type"text/javascript">
+		function run() {
+			let htmlCode = document.querySelector(".editor #html-code").value;
+			let cssCode = "<style>"+document.querySelector(".editor #css-code").value+"</style>";
+			let jsCode = document.querySelector(".editor #js-code").value;
+			let output = document.querySelector(".preview #output");
+			//console.log(htmlCode,cssCode,jsCode,output);
+			output.contentDocument.body.innerHTML = htmlCode+cssCode;
+			output.contentWindow.eval(jsCode);
+		}
+		document.querySelector(".editor #html-code").addEventListener("keyup",run);
+		document.querySelector(".editor #css-code").addEventListener("keyup",run);
+		document.querySelector(".editor #js-code").addEventListener("keyup",run);
+	</script>
+</body>
+</html>
